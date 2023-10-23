@@ -7,7 +7,7 @@ def displaySaves():
     f1reader = csv.reader(f1)
     
     table = PrettyTable()
-    table.(['City','Condition', 'Temperature(C)', 'UV Index'])
+    table.field_names = ['City','Condition', 'Temperature(C)', 'UV Index']
     for row in f1reader:
         table.add_row(row)
     print(table)
@@ -74,7 +74,10 @@ def serCity():
     
     for row in f1reader:
         if row[0].lower() == usrQuery.lower():
-            print(row)
+            table = PrettyTable()
+            table.field_names = ['City','Condition', 'Temperature(C)', 'UV Index']
+            table.add_row(row)
+            print(table)
             break
     else:
         print('Error: City Data search unsuccessful.')
@@ -139,6 +142,7 @@ def editCity():
                 print('--- Changed UV index.')
 
             elif usrchoice == 5:
+                print('Saved Edits.')
                 break
 
             else:
@@ -158,7 +162,7 @@ def savesMain():
     while True:
         cls()
         
-        print('---Saved Weather Data---')
+        print('---Saved Weather Data---'.center(globalCenter))
         
         print('1. Display all Saved Cities data\n'
               '2. Add City data\n'

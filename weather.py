@@ -66,13 +66,13 @@ def weatherMain():
     cls()
     
     print(f'---Weather Forecast---'.center(globalCenter))
-    print(f'--{searchedCity}--'.center(globalCenter))
     
     # print(f"Condition: {weatherData['current']['condition']['text']}\n"
     #       f"Temperature: {weatherData['current']['temp_c']}°C\n"
     #       f"UV Index: {weatherData['current']['uv']}")
     
     table = PrettyTable()
+    table.title = f'{searchedCity}'
     table.add_column('Condition', [weatherData['current']['condition']['text']])
     table.add_column('Temperature (°C)', [weatherData['current']['temp_c']])
     table.add_column('UV Index', [weatherData['current']['uv']])

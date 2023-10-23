@@ -1,6 +1,6 @@
 import os
 
-globalCenter = 45
+globalCenter = 43
 
 def cls():
     if os.name == 'nt':  # nt based system
