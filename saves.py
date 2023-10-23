@@ -1,6 +1,29 @@
 import csv
 from utils import *
+from weather import *
 
+def displaySaves():
+    f1 = open('savedsheet.csv', 'r', newline='')
+    f1reader = csv.reader(f1)
+    
+    for row in f1reader:
+        print(row)
+    f1.close()
+
+def addSaves():
+    f1 = open('savedsheet.csv', 'a+', newline='')
+    f1writer = csv.writer(f1)
+    
+    weatherData = None
+    usrCity = None
+    rawSearchData = None
+    
+    usrCity = input('Enter the city : ')
+    rawSearchData = searchCity(usrCity)
+    searchedCity = formatSearch(rawSearchData)
+    
+    weatherData = getCityData(searchedCity)
+              
 def savesMain():
     while True:
         cls()
@@ -19,10 +42,15 @@ def savesMain():
         if usrChoice == 1:
             cls()
             
-            f1 = open('savedsheet.csv', 'r', newline='')
-            f1reader = csv.reader(f1)
+            displaySaves()
             
-            for row in f1reader:
-                print(row)
             input('---Press ENTER to go back.')
-            f1.close()
+            cls()
+            
+        elif usrChoice == 2:
+            cls()
+            
+            addSaves()
+            
+            input('---Press ENTER to go back.')
+            cls()

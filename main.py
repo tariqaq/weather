@@ -22,16 +22,22 @@ def main():
             
             input('---Press ENTER to go back.')
             cls()
+            
         elif usrChoice == 2 :
             cls()
             
-            savesMain() # func call placeholder
+            savesMain()
             
             input('---Press ENTER to go back.')
             cls()
+            
         elif usrChoice == 3 :
             print('---Exiting Program---')
             break
+        
+        else:
+            input('Error : Wrong choice. Press ENTER to go back.')
+            
     
     
 main()
