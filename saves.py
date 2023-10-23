@@ -25,8 +25,8 @@ def addSaves():
     weatherData = getCityData(searchedCity)
     
     tmpRow = [searchedCity, weatherData['current']['condition']['text'], weatherData['current']['temp_c'], weatherData['current']['uv']] # [cityname, condition, tempcelsius, uvindex]
-    
     f1writer.writerow(tmpRow)
+    print(f'---Added {searchedCity} weather data.')
     f1.close() # SAVES THE FILE
               
 def savesMain():
