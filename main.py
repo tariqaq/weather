@@ -7,7 +7,7 @@ def main():
     while True:
         cls()
         
-        print('---WEATHER FORECAST---')
+        print('---WEATHER FORECAST---'.center(globalCenter))
         
         print('1. Show weather\n'
             '2. Saved Data\n'
@@ -38,6 +38,4 @@ def main():
         else:
             input('Error : Wrong choice. Press ENTER to go back.')
             
-    
-    
 main()

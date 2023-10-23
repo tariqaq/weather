@@ -1,4 +1,6 @@
 import requests
+from prettytable import PrettyTable
+from utils import *
 
 API_KEY = "5c443b217be241e6b75175940230507"  # trq main acc
 
@@ -61,8 +63,17 @@ def weatherMain():
     searchedCity = formatSearch(rawSearchData)
     weatherData = getCityData(searchedCity)
     
-    print(f'---Weather Forecast for : {searchedCity}--')
+    cls()
     
-    print(f"Condition: {weatherData['current']['condition']['text']}\n"
-          f"Temperature: {weatherData['current']['temp_c']}°C\n"
-          f"UV Index: {weatherData['current']['uv']}")
+    print(f'---Weather Forecast---'.center(globalCenter))
+    print(f'--{searchedCity}--'.center(globalCenter))
+    
+    # print(f"Condition: {weatherData['current']['condition']['text']}\n"
+    #       f"Temperature: {weatherData['current']['temp_c']}°C\n"
+    #       f"UV Index: {weatherData['current']['uv']}")
+    
+    table = PrettyTable()
+    table.add_column('Condition', [weatherData['current']['condition']['text']])
+    table.add_column('Temperature (°C)', [weatherData['current']['temp_c']])
+    table.add_column('UV Index', [weatherData['current']['uv']])
+    print(table)

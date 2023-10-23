@@ -6,8 +6,12 @@ def displaySaves():
     f1 = open('savedsheet.csv', 'r', newline='')
     f1reader = csv.reader(f1)
     
+    table = PrettyTable()
+    table.(['City','Condition', 'Temperature(C)', 'UV Index'])
     for row in f1reader:
-        print(row)
+        table.add_row(row)
+    print(table)
+    
     f1.close()
 
 def addCity():
