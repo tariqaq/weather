@@ -103,7 +103,7 @@ def editCity():
             print('3. Change Temperature')
             print('4. Change UV Index')
             print('5. Finish editing')
-            print('debug: ',tempRows)
+            #print('debug: ',tempRows) # DEBUG
             usrchoice = int(input('Enter Choice : '))
 
             if usrchoice == 1:
@@ -204,3 +204,9 @@ def savesMain():
             
             input('--Press ENTER to go back.')
             cls()
+            
+        elif usrChoice == 6:
+            break
+        
+        else:
+            input('Error: Wrong choice. Press ENTER to go back.')
