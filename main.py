@@ -19,14 +19,14 @@ def main():
             
             weatherMain()
             
-            input('Press ENTER to go back.')
+            input('---Press ENTER to go back.')
             cls()
         elif usrChoice == 2 :
             cls()
             
             print('saved datas.') # func call placeholder
             
-            input('Press ENTER to go back.')
+            input('---Press ENTER to go back.')
             cls()
         elif usrChoice == 3 :
             print('---Exiting Program---')

@@ -57,8 +57,12 @@ def weatherMain():
     
     usrCity = input('Enter the city : ')
     rawSearchData = searchCity(usrCity)
-    searchedData = formatSearch(rawSearchData)
+    searchedCity = formatSearch(rawSearchData)
     
-    weatherData = getCityData(searchedData)
+    weatherData = getCityData(searchedCity)
     
+    print(f'---Weather Report for : {searchedCity}--')
     
+    print(f"Condition: {weatherData['current']['condition']['text']}\n"
+          f"Temperature: {weatherData['current']['temp_c']}°C\n"
+          f"UV Index: {weatherData['current']['uv']}")
