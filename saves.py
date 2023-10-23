@@ -54,6 +54,19 @@ def delCity():
     f1writer = csv.writer(f1)
     f1writer.writerows(tempRows) # write all rows except for deleted one
 
+def serCity():
+    f1 = open('savedsheet.csv', 'r', newline='')
+    f1reader = csv.reader(f1)
+    
+    usrQuery = input('Enter city to search : ')
+    
+    for row in f1reader:
+        if row[0].lower() == usrQuery.lower():
+            print(row)
+            break
+    else:
+        print('Error: City Data search unsuccessful.')
+        
 def savesMain():
     while True:
         cls()
@@ -93,4 +106,10 @@ def savesMain():
             input('---Press ENTER to go back.')
             cls()
             
-        
+        elif usrChoice == 4:
+            cls()
+            
+            serCity()
+            
+            input('---Press ENTER to go back.')
+            cls()
