@@ -1,5 +1,6 @@
 from utils import *
 from weather import *
+from saves import *
 
 def main():
     
@@ -24,7 +25,7 @@ def main():
         elif usrChoice == 2 :
             cls()
             
-            print('saved datas.') # func call placeholder
+            savesMain() # func call placeholder
             
             input('---Press ENTER to go back.')
             cls()

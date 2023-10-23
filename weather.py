@@ -61,7 +61,7 @@ def weatherMain():
     
     weatherData = getCityData(searchedCity)
     
-    print(f'---Weather Report for : {searchedCity}--')
+    print(f'---Weather Forecast for : {searchedCity}--')
     
     print(f"Condition: {weatherData['current']['condition']['text']}\n"
           f"Temperature: {weatherData['current']['temp_c']}°C\n"
