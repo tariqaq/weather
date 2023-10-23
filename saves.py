@@ -28,7 +28,7 @@ def addCity():
     f1reader = csv.reader(f1)
     for row in f1reader:
         if row[0] == searchedCity:
-            print('--- City Data already exists, hence not added.')
+            print('Error: City Data already exists, hence not added.')
             return
     
     tmpRow = [searchedCity, weatherData['current']['condition']['text'], weatherData['current']['temp_c'], weatherData['current']['uv']] # [cityname, condition, tempcelsius, uvindex]
@@ -40,8 +40,20 @@ def delCity():
     f1 = open('savedsheet.csv', 'r', newline='')
     f1reader = csv.reader(f1)
     
-    usrDel = input('Enter city to delete data for')
+    usrDel = input('Enter city to delete data for: ')
     
+    tempRows = [] # nested list having all rows of original
+    for row in f1reader:
+        if row[0].lower() != usrDel.lower(): # adding all rows except for the one to be deleted
+            tempRows.append(row)
+    else:
+        print('Error: City Data not found for deletion, hence not deleted.')
+    f1.close()
+    
+    f1 = open('savedsheet.csv', 'w', newline='')
+    f1writer = csv.writer(f1)
+    f1writer.writerows(tempRows) # write all rows except for deleted one
+
 def savesMain():
     while True:
         cls()
