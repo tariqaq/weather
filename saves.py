@@ -19,10 +19,13 @@ def addSaves():
     rawSearchData = None
     
     usrCity = input('Enter the city : ')
+    
     rawSearchData = searchCity(usrCity)
     searchedCity = formatSearch(rawSearchData)
-    
     weatherData = getCityData(searchedCity)
+    
+    tmpRow = [searchedCity, weatherData['current']['condition']['text'], weatherData['current']['temp_c'], weatherData['current']['uv']] # [cityname, condition, tempcelsius, uvindex]
+    
               
 def savesMain():
     while True:

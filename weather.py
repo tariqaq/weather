@@ -56,9 +56,9 @@ def weatherMain():
     rawSearchData = None
     
     usrCity = input('Enter the city : ')
+    
     rawSearchData = searchCity(usrCity)
     searchedCity = formatSearch(rawSearchData)
-    
     weatherData = getCityData(searchedCity)
     
     print(f'---Weather Forecast for : {searchedCity}--')
