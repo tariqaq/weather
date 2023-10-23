@@ -39,21 +39,29 @@ def addCity():
 def delCity():
     f1 = open('savedsheet.csv', 'r', newline='')
     f1reader = csv.reader(f1)
-    
-    usrDel = input('Enter city to delete data for: ')
-    
-    tempRows = [] # nested list having all rows of original
-    for row in f1reader:
-        if row[0].lower() != usrDel.lower(): # adding all rows except for the one to be deleted
-            tempRows.append(row)
-    else:
-        print('Error: City Data not found for deletion, hence not deleted.')
-    f1.close()
-    
-    f1 = open('savedsheet.csv', 'w', newline='')
-    f1writer = csv.writer(f1)
-    f1writer.writerows(tempRows) # write all rows except for deleted one
 
+    usrDel = input('Enter city to delete data for: ')
+
+    flag = False
+    tempRows = []
+
+    for row in f1reader:
+        if row[0].lower() == usrDel.lower():
+            flag = True
+        else:
+            tempRows.append(row)
+            
+    if flag:
+        f1.close()
+        f1 = open('savedsheet.csv', 'w', newline='')
+        f1writer = csv.writer(f1)
+        f1writer.writerows(tempRows)
+        f1.close()
+        print('---Deleted successfully.')
+    
+    else:
+        print('Error: City not found for deletion, hence not deleted.')
+        
 def serCity():
     f1 = open('savedsheet.csv', 'r', newline='')
     f1reader = csv.reader(f1)
@@ -66,7 +74,82 @@ def serCity():
             break
     else:
         print('Error: City Data search unsuccessful.')
-        
+
+def editCity():
+    f1 = open('savedsheet.csv', 'r', newline='')
+    f1reader = csv.reader(f1)
+
+    usrEdit = input('Enter city to edit data for: ')
+
+    flag = False
+    tempRows = []
+    
+    for row in f1reader:
+        if row[0].lower() == usrEdit.lower():
+            flag = True
+            
+        tempRows.append(row)
+
+    if not flag:
+        print('Error: City does not exist for editing, hence not edited.')
+        return
+
+    f1.close()
+
+    if flag:
+        while True:
+            print('1. Change City name')
+            print('2. Change Condition')
+            print('3. Change Temperature')
+            print('4. Change UV Index')
+            print('5. Finish editing')
+            print('debug: ',tempRows)
+            usrchoice = int(input('Enter Choice : '))
+
+            if usrchoice == 1:
+                ename = input('Enter name : ')
+                for i in range(len(tempRows)):
+                    if tempRows[i][0].lower() == usrEdit.lower():
+                        tempRows[i][0] = ename
+                print('--- Changed name.')
+
+            elif usrchoice == 2:
+                econd = input('Enter condition : ')
+                for i in range(len(tempRows)):
+                    if tempRows[i][0].lower() == usrEdit.lower():
+                        tempRows[i][1] = econd
+                print('--- Changed condition.')
+
+            elif usrchoice == 3:
+                etemp = input('Enter temperature : ')
+                for i in range(len(tempRows)):
+                    if tempRows[i][0].lower() == usrEdit.lower():
+                        tempRows[i][2] = etemp
+                print('--- Changed temperature.')
+
+            elif usrchoice == 4:
+                euv = input('Enter UV index : ')
+                for i in range(len(tempRows)):
+                    if tempRows[i][0].lower() == usrEdit.lower():
+                        tempRows[i][3] = euv
+                print('--- Changed UV index.')
+
+            elif usrchoice == 5:
+                break
+
+            else:
+                print('Error: Wrong choice.')
+
+        # Write the edited rows back into the file
+        f1 = open('savedsheet.csv', 'w', newline='')
+        f1writer = csv.writer(f1)
+
+        f1writer.writerows(tempRows)
+
+        f1.close()
+
+
+
 def savesMain():
     while True:
         cls()
@@ -112,4 +195,12 @@ def savesMain():
             serCity()
             
             input('---Press ENTER to go back.')
+            cls()
+            
+        elif usrChoice == 5:
+            cls()
+            
+            editCity()
+            
+            input('--Press ENTER to go back.')
             cls()
